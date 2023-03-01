@@ -9,8 +9,8 @@ COPY mvnw .
 COPY .mvn .mvn
 
 # COPY THE JSON and WebPack files
-COPY package.json
-COPY webpack.config.js
+COPY package.json .
+COPY webpack.config.js .
 
 # Copy the pom.xml file
 COPY pom.xml .
