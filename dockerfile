@@ -31,7 +31,7 @@
 #### Stage 2: A minimal docker image with command to run the app 
 FROM openjdk:8-jdk-alpine
 
-WORKDIR /app
+# WORKDIR /app
 
 ARG JAR_DEPENDENCY=target/project-0.0.1-SNAPSHOT.jar
 
