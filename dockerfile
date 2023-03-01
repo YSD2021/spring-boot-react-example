@@ -40,4 +40,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.contoso.payroll"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","-jar","/*.jar"]
