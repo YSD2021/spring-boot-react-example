@@ -33,7 +33,7 @@ FROM openjdk:8-jdk-alpine
 
 # WORKDIR /app
 
-ARG JAR_DEPENDENCY=target/react-and-spring-data-rest-0.0.1-SNAPSHOT.jar
+ARG JAR_DEPENDENCY=target/spring-boot-react-example-0.0.1-SNAPSHOT.jar
 
 ADD ${JAR_DEPENDENCY} application.jar
 
