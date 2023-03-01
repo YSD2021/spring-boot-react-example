@@ -33,7 +33,7 @@ FROM openjdk:8-jdk
 
 # WORKDIR /app
 
-ARG JAR_DEPENDENCY=target/dependency/spring-boot-react-example-0.0.1-SNAPSHOT.jar
+ARG DEPENDENCY=/app/target/dependency
 
 ADD ${JAR_DEPENDENCY} application.jar
 
