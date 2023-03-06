@@ -4,6 +4,8 @@ FROM openjdk:8-jdk as build
 # Set the current working directory inside the image
 WORKDIR /app
 
+EXPOSE 8080
+
 # Copy maven executable to the image
 COPY mvnw .
 COPY .mvn .mvn
@@ -33,7 +35,7 @@ FROM openjdk:8-jdk
 
 # WORKDIR /app
 
-ARG DEPENDENCY=/app/target/dependency/react-and-spring-data-rest-0.0.1-SNAPSHOT.jar
+ARG DEPENDENCY=/app/target/dependency
 
 ADD ${JAR_DEPENDENCY} application.jar
 
@@ -42,6 +44,5 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
-EXPOSE 8080
 
 ENTRYPOINT ["java","-cp","app:app/lib/*","/application.jar"]
