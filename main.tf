@@ -10,7 +10,7 @@ resource "azurerm_container_registry" "acr" {
   name                = "AdeolaReg"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
-  sku                 = "Premium"
+  sku                 = "Standard"
   admin_enabled       = false
   georeplications {
     location                = "East US"
