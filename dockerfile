@@ -44,4 +44,4 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","/application.jar"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","/application.jar"]
