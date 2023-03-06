@@ -30,7 +30,7 @@ RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 #### Stage 2: A minimal docker image with command to run the app 
-FROM openjdk:11-alpine
+FROM openjdk:11
 
 # WORKDIR /app
 EXPOSE 8080
