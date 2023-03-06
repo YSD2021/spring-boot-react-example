@@ -4,7 +4,6 @@ FROM openjdk:8-jdk as build
 # Set the current working directory inside the image
 WORKDIR /app
 
-EXPOSE 8080
 
 # Copy maven executable to the image
 COPY mvnw .
@@ -31,11 +30,11 @@ RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 #### Stage 2: A minimal docker image with command to run the app 
-FROM openjdk:8-jdk
+FROM openjdk:11
 
 # WORKDIR /app
-
-ARG DEPENDENCY=/app/target/dependency
+EXPOSE 8080
+ARG DEPENDENCY=/app/target/dependency/*.jar
 
 ADD ${JAR_DEPENDENCY} application.jar
 
@@ -45,4 +44,4 @@ COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 
-ENTRYPOINT ["java","-cp","app:app/lib/*","-jar","/application.jar"]
+ENTRYPOINT ["java","-jar","/application.jar"]
