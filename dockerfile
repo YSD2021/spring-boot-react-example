@@ -39,9 +39,9 @@ ARG DEPENDENCY=/app/target/dependency/*.jar
 ADD ${JAR_DEPENDENCY} application.jar
 
 # Copy project dependencies from the build stage
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+# COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+# COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+# COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
 
 
 ENTRYPOINT ["java","-jar","/application.jar"]
