@@ -1,0 +1,12 @@
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/SecurityConfiguration.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/WebSocketConfiguration.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/Employee.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/ReactAndSpringDataRestApplication.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/EmployeeRepository.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/SpringDataJpaUserDetailsService.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/Manager.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/ManagerRepository.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/SpringDataRestEventHandler.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/DatabaseLoader.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/EventHandler.java
+/home/Adevm/mygit/src/main/java/com/contoso/payroll/HomeController.java
