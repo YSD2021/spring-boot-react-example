@@ -2,7 +2,7 @@ variable "region" {
   description = "Azure region to create infrastructure in"
   default     = "westeurope"
 }
-variable "project" {
+variable "prefix" {
   description = "The project name"
   default     = "AdeolaBH"
 }
@@ -15,3 +15,4 @@ variable "tags_extra" {
   description = "Extra tags that should be applied to all resources"
   default     = {}
 }
+
