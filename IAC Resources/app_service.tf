@@ -21,9 +21,9 @@ resource "azurerm_app_service" "backend" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     WEBSITES_PORT                       = local.environmentvars["backend_port"]
   }
-}
   site_config {
     always_on = "true"
     # define the images to used for you application
     linux_fx_version = "DOCKER|${azurerm_container_registry.registry.0.login_server}/${local.environmentvars["backend_image"]}:${local.environmentvars["backend_image_tag"]}"
+  }
   }
