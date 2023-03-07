@@ -16,6 +16,8 @@ locals {
    DOCKER_REGISTRY_SERVER_URL            = "adeolabhregistry.azurecr.io"
    DOCKER_REGISTRY_SERVER_USERNAME       = "AdeolaBHregistry"
    DOCKER_REGISTRY_SERVER_PASSWORD       = "2KUofEeXe3mP529mkEG+EsOpZThd0GshNFeBWDiAx1+ACRDuUFgT"
+       WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
+	WEBSITES_PORT = 8080
  }
 }
 resource "azurerm_app_service" "my_app_service_container" {
@@ -23,10 +25,6 @@ resource "azurerm_app_service" "my_app_service_container" {
  location            = "westeurope"
  resource_group_name     = "AdeolaBHresource-group"
  app_service_plan_id     = azurerm_app_service_plan.my_service_plan.id
-   app_settings = {
-    WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
-	WEBSITES_PORT = 8080
-	}
  site_config {
    always_on = "true"
 
