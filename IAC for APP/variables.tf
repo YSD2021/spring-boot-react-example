@@ -8,7 +8,7 @@ variable "web_app_name" {
   description = "Azure Web App Name"
 }
 variable "registry_name" {
-  type        = "BHRegistry"
+  type        = "AdeolaBHregistry"
   description = "Azure Web App Name"
 }
 variable "tag_name" {
