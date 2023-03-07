@@ -12,9 +12,9 @@ variable "registry_name" {
   description = "Azure Web App Name"
 }
 variable "tag_name" {
-  type        = string
+  type        = "adeimage-ysd2021/spring-boot-react-example"
   description = "Azure Web App Name"
- default: 'latest'
+ default: 76
 }
 variable "resource_group_name" {
   type        = "BH-App-Group"
