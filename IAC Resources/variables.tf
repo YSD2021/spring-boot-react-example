@@ -1,25 +1,17 @@
-variable "app_plan_name" {
-  type        = "Adeola-BH-App-Plan"
-  description = "Azure App Service Plan Name"
+variable "region" {
+  description = "Azure region to create infrastructure in"
+  default     = "westeurope"
 }
-
-variable "web_app_name" {
-  type        = "Adeola-BH-App"
-  description = "Azure Web App Name"
+variable "project" {
+  description = "The project name"
+  default     = "BHAdeola"
 }
-variable "registry_name" {
-  type        = "BHRegistry"
-  description = "Azure Web App Name"
+variable "environment" {
+  description = "The project environment"
+  default     = "PROD"
 }
-variable "tag_name" {
-  type        = "adeimage-ysd2021/spring-boot-react-example"
-  description = "Azure Web App Name"
-}
-variable "resource_group_name" {
-  type        = "BH-App-Group"
-  description = "Azure Resource Group Name"
-}
-variable "location" {
-  type        = "westeurope"
-  description = "Azure Resource Region Location"
+variable "tags_extra" {
+  type        = map(string)
+  description = "Extra tags that should be applied to all resources"
+  default     = {}
 }
