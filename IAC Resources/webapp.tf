@@ -4,6 +4,11 @@ resource "azurerm_resource_group" "acr-rg" {
   location = var.location  
 }
 
+data "azurerm_container_registry" "acr" {
+  name                = AdeolaBHregistry
+  resource_group_name = AdeolaBHresource-group
+}
+
 # web App
 resource "azurerm_app_service" "app-service" {
   name = var.web_app_name
