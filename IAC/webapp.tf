@@ -23,10 +23,14 @@ resource "azurerm_app_service" "my_app_service_container" {
  location            = "westeurope"
  resource_group_name     = "AdeolaBHresource-group"
  app_service_plan_id     = azurerm_app_service_plan.my_service_plan.id
+   app_settings = {
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
+	WEBSITES_PORT = 8080
+	}
  site_config {
    always_on = "true"
 
-   linux_fx_version  = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:latest" #define the images to usecfor you application
+   linux_fx_version  = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:82" #define the images to usecfor you application
  }
 
  app_settings = local.env_variables 
