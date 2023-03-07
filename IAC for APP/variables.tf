@@ -1,25 +1,25 @@
 variable "app_plan_name" {
-  type        = "Adeola-BH-App-Plan"
+  default        = "Adeola-BH-App-Plan"
   description = "Azure App Service Plan Name"
 }
 
 variable "web_app_name" {
-  type        = "Adeola-BH-App"
+  default        = "Adeola-BH-App"
   description = "Azure Web App Name"
 }
 variable "registry_name" {
-  type        = "AdeolaBHregistry"
+  default        = "AdeolaBHregistry"
   description = "Azure Web App Name"
 }
 variable "tag_name" {
-  type        = "adeimage-ysd2021/spring-boot-react-example"
+  default        = "adeimage-ysd2021/spring-boot-react-example"
   description = "Azure Web App Name"
 }
 variable "resource_group_name" {
-  type        = "BH-App-Group"
+  default        = "BH-App-Group"
   description = "Azure Resource Group Name"
 }
 variable "location" {
-  type        = "westeurope"
+  default        = "westeurope"
   description = "Azure Resource Region Location"
 }
