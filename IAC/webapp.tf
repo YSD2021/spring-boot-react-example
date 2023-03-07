@@ -11,12 +11,6 @@ resource "azurerm_app_service_plan" "my_service_plan" {
  }
 }
 
-data "azurerm_user_assigned_identity" "assigned_identity_acr_pull" {
- provider            = azurerm.acr_sub
- name                = "User_ACR_pull"
- resource_group_name = "AdeolaBHresource-group"
-}
-
 locals {
  env_variables = {
    DOCKER_REGISTRY_SERVER_URL            = "adeolabhregistry.azurecr.io"
@@ -33,11 +27,6 @@ resource "azurerm_app_service" "my_app_service_container" {
    always_on = "true"
 
    linux_fx_version  = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:latest" #define the images to usecfor you application
- }
-
- identity {
-   type         = "SystemAssigned, UserAssigned"
-   identity_ids = [data.azurerm_user_assigned_identity.assigned_identity_acr_pull.id]
  }
 
  app_settings = local.env_variables 
