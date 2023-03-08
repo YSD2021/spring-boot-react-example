@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "my_service_plan" {
   resource_group_name = "AdeolaBHresource-group"
 }
   resource "azurerm_application_insights" "insights" {
-  name                = "BH-appinsights"
+  name                = "BH-appinsight"
   location            = azurerm_service_plan.my_service_plan.location
   resource_group_name = azurerm_service_plan.my_service_plan.resource_group_name
   application_type    = "web"
