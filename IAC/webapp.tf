@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "my_service_plan" {
-  name                = "Ade-BH-AppPlan"
+  name                = "Ade-BH-AppPlans"
   resource_group_name = "AdeolaBHresource-group"
   location            = "westeurope"
   os_type             = "Linux"
@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "my_service_plan" {
   resource_group_name = "AdeolaBHresource-group"
 }
 resource "azurerm_app_service" "backend" {
- name                = "Ade-BH-App"
+ name                = "Ade-BH-Apps"
  location            = azurerm_service_plan.my_service_plan.location
  resource_group_name     = azurerm_service_plan.my_service_plan.resource_group_name
  app_service_plan_id     = azurerm_service_plan.my_service_plan.id
