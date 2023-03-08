@@ -9,7 +9,15 @@ resource "azurerm_service_plan" "my_service_plan" {
   data "azurerm_container_registry" "registry" {
   name                = "adeolabhregistry"
   resource_group_name = "AdeolaBHresource-group"
-  
+  output "login_server" {
+  value = data.azurerm_container_registry.registry.login_server
+}
+output "admin_username" {
+  value = data.azurerm_container_registry.registry.admin_username
+}
+output "admin_password" {
+  value = data.azurerm_container_registry.registry.admin_password
+}
 }
 resource "azurerm_app_service" "backend" {
  name                = "Ade-BH-Apps"
