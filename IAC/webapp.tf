@@ -1,4 +1,4 @@
-resource "azurerm_app_service_plan" "my_service_plan" {
+resource "azurerm_service_plan" "my_service_plan" {
  name                = "Ade-BH-AppPlan"
  location            = "westeurope"
  resource_group_name = "AdeolaBHresource-group"
@@ -22,9 +22,9 @@ locals {
 }
 resource "azurerm_app_service" "my_app_service_container" {
  name                = "Ade-BH-App"
- location            = azurerm_app_service_plan.my_service_plan.location
- resource_group_name     = azurerm_app_service_plan.my_service_plan.resource_group_name
- app_service_plan_id     = azurerm_app_service_plan.my_service_plan.id
+ location            = azurerm_service_plan.my_service_plan.location
+ resource_group_name     = azurerm_service_plan.my_service_plan.resource_group_name
+ app_service_plan_id     = azurerm_service_plan.my_service_plan.id
  site_config {
    always_on = "true"
 
@@ -36,6 +36,6 @@ resource "azurerm_app_service" "my_app_service_container" {
 
 resource "azurerm_application_insights" "my_app_insight" {
  name                = "my_app_insight"
- location            = azurerm_app_service_plan.my_service_plan.location
- resource_group_name = azurerm_app_service_plan.my_service_plan.resource_group_name
+ location            = azurerm_service_plan.my_service_plan.location
+ resource_group_name = azurerm_service_plan.my_service_plan.resource_group_name
  }
