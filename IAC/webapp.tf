@@ -1,19 +1,23 @@
+data "azurerm_resource_group" "group" {
+  name = "AdeolaBHresource-group"
+}
+
 resource "azurerm_service_plan" "my_service_plan" {
   name                = "Ade-BH-WebAppPlans"
-  resource_group_name = "AdeolaBHresource-group"
-  location            = "westeurope"
+  resource_group_name = data.azurerm_resource_group.group.name
+  location            = data.azurerm_resource_group.group.name.location
   os_type             = "Linux"
   sku_name            = "S1"
 }
 
   data "azurerm_container_registry" "registry" {
   name                = "adeolabhregistry"
-  resource_group_name = "AdeolaBHresource-group"
+  resource_group_name = data.azurerm_resource_group.group.name
 }
 resource "azurerm_app_service" "backend" {
  name                = "Ade-BH-WebApps"
- location            = azurerm_service_plan.my_service_plan.location
- resource_group_name     = azurerm_service_plan.my_service_plan.resource_group_name
+ location            = data.azurerm_resource_group.group.name.location
+ resource_group_name     = data.azurerm_resource_group.group.name
  app_service_plan_id     = azurerm_service_plan.my_service_plan.id
   app_settings = {
     DOCKER_REGISTRY_SERVER_URL          = data.azurerm_container_registry.registry.login_server
@@ -30,7 +34,7 @@ resource "azurerm_app_service" "backend" {
   }
   resource "azurerm_application_insights" "insights" {
   name                = "BH-appinsights"
-  location            = azurerm_service_plan.my_service_plan.location
-  resource_group_name = azurerm_service_plan.my_service_plan.resource_group_name
+  location            = data.azurerm_resource_group.group.name.location
+  resource_group_name = data.azurerm_resource_group.group.name
   application_type    = "web"
 }
