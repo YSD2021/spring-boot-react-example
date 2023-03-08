@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "my_service_plan" {
   resource_group_name = "AdeolaBHresource-group"
   location            = "westeurope"
   os_type             = "Linux"
-  sku_name            = "s1"
+  sku_name            = "S1"
 }
 
   data "azurerm_container_registry" "registry" {
