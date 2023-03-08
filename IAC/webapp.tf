@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "my_service_plan" {
-  name                = "Ade-BH-AppPlans"
+  name                = "Ade-BH-WebAppPlans"
   resource_group_name = "AdeolaBHresource-group"
   location            = "westeurope"
   os_type             = "Linux"
@@ -11,7 +11,7 @@ resource "azurerm_service_plan" "my_service_plan" {
   resource_group_name = "AdeolaBHresource-group"
 }
 resource "azurerm_app_service" "backend" {
- name                = "Ade-BH-Apps"
+ name                = "Ade-BH-WebApps"
  location            = azurerm_service_plan.my_service_plan.location
  resource_group_name     = azurerm_service_plan.my_service_plan.resource_group_name
  app_service_plan_id     = azurerm_service_plan.my_service_plan.id
@@ -28,3 +28,9 @@ resource "azurerm_app_service" "backend" {
     linux_fx_version = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:82"
   }
   }
+  resource "azurerm_application_insights" "insights" {
+  name                = "BH-appinsights"
+  location            = azurerm_service_plan.my_service_plan.location
+  resource_group_name = azurerm_service_plan.my_service_plan.resource_group_name
+  application_type    = "web"
+}
