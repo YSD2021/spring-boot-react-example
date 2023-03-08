@@ -14,16 +14,16 @@ resource "azurerm_app_service_plan" "my_service_plan" {
 locals {
  env_variables = {
    DOCKER_REGISTRY_SERVER_URL            = "adeolabhregistry.azurecr.io"
-   DOCKER_REGISTRY_SERVER_USERNAME       = "AdeolaBHregistry"
-   DOCKER_REGISTRY_SERVER_PASSWORD       = "2KUofEeXe3mP529mkEG+EsOpZThd0GshNFeBWDiAx1+ACRDuUFgT"
+   DOCKER_REGISTRY_SERVER_USERNAME       = var.SERVER_USERNAME
+   DOCKER_REGISTRY_SERVER_PASSWORD       = var.SERVER_PASSWORD
        WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
 	WEBSITES_PORT = 8080
  }
 }
 resource "azurerm_app_service" "my_app_service_container" {
  name                = "Ade-BH-App"
- location            = "westeurope"
- resource_group_name     = "AdeolaBHresource-group"
+ location            = azurerm_app_service_plan.my_service_plan.location
+ resource_group_name     = azurerm_app_service_plan.my_service_plan.resource_group_name
  app_service_plan_id     = azurerm_app_service_plan.my_service_plan.id
  site_config {
    always_on = "true"
@@ -33,3 +33,9 @@ resource "azurerm_app_service" "my_app_service_container" {
 
  app_settings = local.env_variables 
 }
+
+resource "azurerm_application_insights" "my_app_insight" {
+ name                = "my_app_insight"
+ location            = azurerm_app_service_plan.my_service_plan.location
+ resource_group_name = azurerm_app_service_plan.my_service_plan.resource_group_name
+ }
