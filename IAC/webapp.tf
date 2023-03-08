@@ -10,9 +10,6 @@ resource "azurerm_service_plan" "my_service_plan" {
   name                = "adeolabhregistry"
   resource_group_name = "AdeolaBHresource-group"
   
-  output "acr_id" {
-  value = azurerm_container_registry.acr.id
-}
 }
 resource "azurerm_app_service" "backend" {
  name                = "Ade-BH-Apps"
@@ -20,9 +17,9 @@ resource "azurerm_app_service" "backend" {
  resource_group_name     = azurerm_service_plan.my_service_plan.resource_group_name
  app_service_plan_id     = azurerm_service_plan.my_service_plan.id
   app_settings = {
-    DOCKER_REGISTRY_SERVER_URL          = azurerm_container_registry.registry.0.login_server
-    DOCKER_REGISTRY_SERVER_USERNAME     = azurerm_container_registry.registry.0.admin_username
-    DOCKER_REGISTRY_SERVER_PASSWORD     = azurerm_container_registry.registry.0.admin_password
+    DOCKER_REGISTRY_SERVER_URL          = azurerm_container_registry.registry.login_server
+    DOCKER_REGISTRY_SERVER_USERNAME     = azurerm_container_registry.registry.admin_username
+    DOCKER_REGISTRY_SERVER_PASSWORD     = azurerm_container_registry.registry.admin_password
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = false
     WEBSITES_PORT                       = 8080
   }
