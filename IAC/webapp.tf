@@ -9,6 +9,10 @@ resource "azurerm_service_plan" "my_service_plan" {
   data "azurerm_container_registry" "registry" {
   name                = "adeolabhregistry"
   resource_group_name = "AdeolaBHresource-group"
+  
+  output "acr_id" {
+  value = azurerm_container_registry.acr.id
+}
 }
 resource "azurerm_app_service" "backend" {
  name                = "Ade-BH-Apps"
