@@ -32,6 +32,6 @@ resource "azurerm_app_service" "backend" {
   site_config {
     always_on = "true"
     # define the images to used for you application
-    linux_fx_version = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:82"
+    linux_fx_version = "DOCKER|adeolabhregistry.azurecr.io/adeimage-ysd2021/spring-boot-react-example:144"
   }
   }
